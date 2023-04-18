@@ -1,5 +1,5 @@
 # Задание 1
-
+![Image alt](https://github.com/ArturIuzeev/ProbabilityTheory/blob/main/Lab1/Task1-3/Task1.1.jpeg)
 # Задание 2
 ![Image alt](https://github.com/ArturIuzeev/ProbabilityTheory/blob/main/Lab1/Task1-3/Task2.1.1.jpeg)
 ![Image alt](https://github.com/ArturIuzeev/ProbabilityTheory/blob/main/Lab1/Task1-3/Task2.1.2.jpeg)
