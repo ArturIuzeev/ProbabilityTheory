@@ -12,3 +12,4 @@
 
 ![Image alt](https://github.com/ArturIuzeev/ProbabilityTheory/blob/main/Lab2/Task3/Screenshot%202023-06-07%20at%2017.13.51.png)
 
+По графикам, видно, что с увеличением n, получаем более лучшее распределение
