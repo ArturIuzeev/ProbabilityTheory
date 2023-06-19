@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 rnd = np.random.default_rng(999)
+sizes = [100, 500, 1000]
 
 
 def make_distribution():
@@ -76,18 +77,31 @@ def inverse(size):
 def rejection(size):
     return np.array([next_rand() for x in range(size)])
 
-
+count = 0
+norm = 0
 def next_rand():
     helper = distribution.pdf(1.37)
     left = 0
     right = 2.5
+    global count
+    global norm
     while True:
         y = rnd.uniform() * right
         y = y + left
         q = distribution.pdf(y) / helper / right
+        count += 1
         if rnd.uniform() < q:
+            norm += 1
+            # print(count)
+            # print("All")
+            # print(norm)
+            # print("Norm")
             return y
 
+def countTime(func):
+    start = time.time_ns()
+    func()
+    return time.time_ns() - start
 
 plot(100, rvs, "RVS (size=%s)")
 plot(1000, rvs, "RVS (size=%s)")
@@ -96,5 +110,14 @@ plot(100, inverse, "CDF (size=%s)")
 plot(1000, inverse, "CDF (size=%s)")
 plot(10000, inverse, "CDF (size=%s)")
 
-plot(100, rejection, "Rejection sampling (size=%s)")
-plot(1000, rejection, "Rejection sampling (size=%s)")
+plot(100, rejection, "Rej (size=%s)")
+plot(1000, count, norm, rejection)
+
+plt.plot(sizes, [countTime(lambda : rvs(size)) for size in sizes], label="RVS")
+plt.plot(sizes, [countTime(lambda : inverse(size)) for size in sizes], label="Inverse CDF")
+plt.plot(sizes, [countTime(lambda : rejection(size)) for size in sizes], label="Rejection sampling")
+plt.legend()
+plt.ylabel("Time")
+plt.xlabel("Size")
+plt.yscale("log")
+plt.show()
